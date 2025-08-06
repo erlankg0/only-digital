@@ -1,0 +1,29 @@
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Горизонтальная линия */
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: $line-color;
+  transform: translateY(-50%);
+}
+
+/* Вертикальная линия */
+.banner::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;       /* толщина линии */
+  height: 100%;
+  background-color: $line-color; /* цвет линии */
+  transform: translateX(-50%);
+}

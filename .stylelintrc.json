@@ -1,0 +1,42 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier"
+  ],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "indentation": 2,
+    "number-leading-zero": "always",
+    "string-quotes": "double",
+    "color-hex-case": "lower",
+    "color-hex-length": "short",
+    "property-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "at-rule-no-vendor-prefix": true,
+    "order/properties-order": [
+      "position",
+      "top",
+      "right",
+      "bottom",
+      "left",
+      "z-index",
+      "display",
+      "flex",
+      "flex-direction",
+      "align-items",
+      "justify-content",
+      "width",
+      "height",
+      "padding",
+      "margin",
+      "background",
+      "color",
+      "font",
+      "font-size",
+      "border",
+      "box-shadow",
+      "transition"
+    ]
+  }
+}

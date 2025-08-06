@@ -1,0 +1,31 @@
+@import 'modern-css-reset';
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: $primary-color;
+  font-weight: $font-regular;
+  background-color: $root-bg;
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+}
