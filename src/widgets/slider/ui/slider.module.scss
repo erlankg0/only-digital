@@ -1,0 +1,38 @@
+.slide {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider {
+  max-width: 100rem;
+  width: 100%;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  align-items: start;
+
+  &__counter {
+    font-size: $small-size;
+    font-weight: $font-regular;
+    color: $primary-color;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
+}
+
+
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

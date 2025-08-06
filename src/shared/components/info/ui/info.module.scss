@@ -1,0 +1,23 @@
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__year {
+    font-size: $large-size;
+    font-weight: $font-bold;
+    color: $purple-color;
+  }
+
+  &__text {
+    font-size: $regular-size;
+    font-weight: $font-regular;
+    color: $primary-color;
+    text-align: start;
+    max-height: 9rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
+}

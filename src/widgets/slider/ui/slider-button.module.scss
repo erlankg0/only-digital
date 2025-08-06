@@ -1,0 +1,14 @@
+.button {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+
+  border-radius: 50%;
+  border: 1px solid $line-color;
+
+  cursor: pointer;
+  font-size: $small-size;
+}
