@@ -5,7 +5,7 @@ $rose-color: #EF5DA8;
 $root-bg: #E5E5E5;
 
 $primary-color: #42567A;
-$line-color: rgba(#FFFFFF, 0.2);
+$line-color: rgba($primary-color, 0.2);
 $gradient-line-vertical: linear-gradient(180deg, #3877EE 0%, #EF5DA8 100%);
 
 // типография

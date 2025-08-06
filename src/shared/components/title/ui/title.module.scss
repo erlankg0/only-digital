@@ -1,0 +1,20 @@
+.title {
+  font-weight: $font-bold;
+  font-size: $title-size;
+  color: $primary-color;
+  max-width: 35rem;
+  position: relative;
+  padding-left: 3rem;
+
+  margin: 0;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0.5rem;
+    height: 100%;
+    background: $gradient-line-vertical;
+  }
+}
