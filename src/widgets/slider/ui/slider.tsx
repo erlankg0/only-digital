@@ -30,20 +30,20 @@ export function SliderUI() {
       >
         <SwiperSlide>
           <div className={styles.slide}>
-            <YearUI year="2021" />
-            <YearUI year="2022" />
+            <YearUI year={2021} animateTrigger={currentIndex} />
+            <YearUI year={2022} animateTrigger={currentIndex} />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.slide}>
-            <YearUI year="2023" />
-            <YearUI year="2024" />
+            <YearUI year={2000} animateTrigger={currentIndex} />
+            <YearUI year={2004} animateTrigger={currentIndex} />
           </div>
         </SwiperSlide>
         <SwiperSlide>
           <div className={styles.slide}>
-            <YearUI year="2024" />
-            <YearUI year="2026" />
+            <YearUI year={2010} animateTrigger={currentIndex} />
+            <YearUI year={1999} animateTrigger={currentIndex} />
           </div>
         </SwiperSlide>
       </Swiper>
