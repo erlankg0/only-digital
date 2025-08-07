@@ -6,10 +6,11 @@ import styles from './slider-button.module.scss';
 
 interface SliderButtonProps {
   isNext: boolean;
+  canMove: boolean;
   swiperRef: RefObject<SwiperType | null>;
 }
 
-export function SliderButton({ isNext, swiperRef }: SliderButtonProps) {
+export function SliderButton({ isNext, swiperRef, canMove }: SliderButtonProps) {
   const handleOnClick = () => {
     if (!swiperRef.current) return;
 
@@ -20,5 +21,6 @@ export function SliderButton({ isNext, swiperRef }: SliderButtonProps) {
     }
   };
 
-  return <button className={styles.button} onClick={handleOnClick}>{isNext ? '>' : '<'}</button>;
+  return <button className={`${styles.button} ${canMove ? (styles.active) : (styles.disabled)}`}
+                 onClick={handleOnClick}>{isNext ? '>' : '<'}</button>;
 }

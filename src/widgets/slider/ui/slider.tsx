@@ -15,6 +15,9 @@ export function SliderUI() {
 
   const totalSlides = 3; // общее количество слайдов
 
+  const canGoPrev = currentIndex > 0;
+  const canGoNext = currentIndex < totalSlides - 1;
+
   return (
     <div>
       <Swiper
@@ -53,12 +56,22 @@ export function SliderUI() {
           {currentIndex + 1} / {totalSlides}
         </p>
         <div className={styles.navigation__buttons}>
-          <SliderButton isNext={false} swiperRef={swiperRef} />
-          <SliderButton isNext={true} swiperRef={swiperRef} />
+          <SliderButton canMove={canGoPrev} isNext={false} swiperRef={swiperRef} />
+          <SliderButton canMove={canGoNext} isNext={true} swiperRef={swiperRef} />
         </div>
       </div>
       <div className={styles.info}>
 
+        <InfoUI year={'2000'}
+                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
+        <InfoUI year={'2000'}
+                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
+
+        <InfoUI year={'2000'}
+                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
+
+        <InfoUI year={'2000'}
+                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
 
       </div>
 
