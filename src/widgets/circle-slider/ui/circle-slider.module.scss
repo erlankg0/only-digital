@@ -1,10 +1,70 @@
-.slider {
-  width: 100%;
-  max-height: 8rem;
-  height: 100%;
-
-  border-radius: 50%;
-  border: 1px solid $line-color;
-
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; // Скрыть элементы, выходящие за границы
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+}
+
+.circle {
+  z-index: 10;
+  position: relative;
+  width: 530px;
+  height: 530px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $line-color;
+  border-radius: 50%;
+  // Добавить will-change для оптимизации анимации
+  will-change: transform;
+
+  // Сглаживание анимации
+  transform-style: preserve-3d;
+}
+
+.item {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  // Улучшения для плавности анимации
+  will-change: transform, opacity, scale;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  // Базовый масштаб
+  transform-origin: center;
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  &.active {
+    z-index: 10;
+  }
+}
+
+// Дополнительные улучшения для предотвращения "прыжков"
+@media (prefers-reduced-motion: no-preference) {
+  .circle {
+    // Использовать transform3d для аппаратного ускорения
+    transform: translate3d(0, 0, 0);
+  }
+
+  .item {
+    transform: translate3d(0, 0, 0);
+  }
 }
