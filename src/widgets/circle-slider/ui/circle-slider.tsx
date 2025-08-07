@@ -12,8 +12,8 @@ export function CircleSlider() {
   const anglePerItem = 360 / ITEMS.length;
 
   const rotateTo = (index: number) => {
-    const currentRotation = gsap.getProperty(circleRef.current, "rotation") as number;
-    const targetAngle = -anglePerItem * index + 90;
+    const currentRotation = gsap.getProperty(circleRef.current, 'rotation') as number;
+    const targetAngle = -anglePerItem * index - 45;
 
     let angleDiff = targetAngle - currentRotation;
     while (angleDiff > 180) angleDiff -= 360;
@@ -53,7 +53,7 @@ export function CircleSlider() {
 
               onClick={() => rotateTo(i)}
             >
-              {i + 1}
+              {i == activeIndex ? ('active') : i + 1}
             </div>
           );
         })}
