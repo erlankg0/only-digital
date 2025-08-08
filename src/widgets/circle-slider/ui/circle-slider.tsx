@@ -1,18 +1,68 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { CircleDot } from './circle-dot';
 import styles from './circle-slider.module.scss';
+import { useSlider } from '@/features/slider';
 
-const ITEMS = Array.from({ length: 8 });
+const circleInfo = [
+  {
+    index: 0,
+    text: 'Кино',
+    info: Array.from({ length: 12 }, (_, i) => ({
+      year: 1987 + i,
+      text: `Фильм ${i + 1}`,
+    })),
+  },
+  {
+    index: 1,
+    text: 'Музыка',
+    info: Array.from({ length: 12 }, (_, i) => ({
+      year: 1992 + i,
+      text: `Альбом ${i + 1}`,
+    })),
+  },
+  {
+    index: 2,
+    text: 'Игры',
+    info: Array.from({ length: 12 }, (_, i) => ({
+      year: 1997 + i,
+      text: `Игра ${i + 1}`,
+    })),
+  },
+  {
+    index: 3,
+    text: 'Технологии',
+    info: Array.from({ length: 12 }, (_, i) => ({
+      year: 2002 + i,
+      text: `Технология ${i + 1}`,
+    })),
+  },
+  {
+    index: 4,
+    text: 'Мода',
+    info: Array.from({ length: 12 }, (_, i) => ({
+      year: 2007 + i,
+      text: `Тренд ${i + 1}`,
+    })),
+  },
+  {
+    index: 5,
+    text: 'Спорт',
+    info: Array.from({ length: 12 }, (_, i) => ({
+      year: 2012 + i,
+      text: `Событие ${i + 1}`,
+    })),
+  },
+];
 
 export function CircleSlider() {
   const circleRef = useRef<HTMLDivElement>(null);
-  const [activeIndex, setActiveIndex] = useState(ITEMS.length - 1);
-  const [rotation, setRotation] = useState(0); //  состояние для текущего поворота что бы комписировать повороты дочерних данных
+  const { activeSlide, setActiveSlide } = useSlider();
 
-  const anglePerItem = 360 / ITEMS.length;
+  const [rotation, setRotation] = useState(0);
+  const anglePerItem = 360 / circleInfo.length;
 
   const rotateTo = (index: number) => {
     const currentRotation = gsap.getProperty(circleRef.current, 'rotation') as number;
@@ -30,17 +80,19 @@ export function CircleSlider() {
       ease: 'power2.inOut',
       onUpdate: () => {
         const updatedRotation = gsap.getProperty(circleRef.current, 'rotation') as number;
-        setRotation(updatedRotation); // обновляем поворот
+        setRotation(updatedRotation);
       },
     });
-
-    setActiveIndex(index);
   };
+
+  useEffect(() => {
+    rotateTo(activeSlide);
+  }, [activeSlide]);
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.circle} ref={circleRef}>
-        {ITEMS.map((_, i) => {
+        {circleInfo.map((info, i) => {
           const angle = anglePerItem * i;
           const radius = 265;
 
@@ -50,16 +102,16 @@ export function CircleSlider() {
           return (
             <div
               key={i}
-              className={`${styles.item} ${i === activeIndex ? styles.active : ''}`}
+              className={`${styles.item} ${i === activeSlide ? styles.active : ''}`}
               style={{
                 left: '50%',
                 top: '50%',
                 transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
               }}
-              onClick={() => rotateTo(i)}
+              onClick={() => setActiveSlide(i)}
             >
               <div style={{ transform: `rotate(${-rotation}deg)` }}>
-                <CircleDot sliderIndex={i} title={'Наука'} isActive={activeIndex === i} />
+                <CircleDot sliderIndex={i + 1} title={info.text} isActive={activeSlide === i} />
               </div>
             </div>
           );

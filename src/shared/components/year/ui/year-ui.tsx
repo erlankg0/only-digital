@@ -5,9 +5,10 @@ import styles from './year.module.scss';
 interface YearUIProps {
   year: number;
   animateTrigger: number; // тригер для анимации так как при измения индекста в swipper будет пререндинг через useEffect
+  isRose?: boolean;
 }
 
-export function YearUI({ year, animateTrigger }: YearUIProps) {
+export function YearUI({ year, animateTrigger, isRose }: YearUIProps) {
   const numberRef = useRef<HTMLParagraphElement>(null);
   const obj = useRef({ value: year - 10 });
 
@@ -27,5 +28,6 @@ export function YearUI({ year, animateTrigger }: YearUIProps) {
     });
   }, [year, animateTrigger]); // следим за изменением года и триггера анимации
 
-  return <p ref={numberRef} className={styles.year}>{year - 10}</p>;
+  return <p ref={numberRef}
+            className={`${styles.year} ${isRose ? styles.year__rose : styles.year__purple}`}>{year - 10}</p>;
 }

@@ -1,5 +1,12 @@
 .year {
   font-size: $date-size;
   font-weight: $font-bold;
-  color: $rose-color;
+
+  &__rose {
+    color: $rose-color;
+  }
+
+  &__purple {
+    color: $purple-color;
+  }
 }

@@ -3,20 +3,33 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { YearUI } from '@/shared/components/year';
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import { SliderButton } from '@/widgets/slider/ui/slider.button';
 import { InfoUI } from '@/shared/components/info';
 import styles from './slider.module.scss';
+import { CircleSlider } from '@/widgets/circle-slider';
+import { useSlider } from '@/features/slider';
+
+
+const years = [
+  [1987, 1991],
+  [1992, 1996],
+  [1997, 2001],
+  [2002, 2006],
+  [2007, 2011],
+  [2012, 2016],
+];
+
 
 export function SliderUI() {
   const swiperRef = useRef<SwiperType | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0); // индекс текущего слайда
+  const { activeSlide, setActiveSlide } = useSlider();
 
-  const totalSlides = 3; // общее количество слайдов
+  const totalSlides = years.length; // общее количество слайдов
 
-  const canGoPrev = currentIndex > 0;
-  const canGoNext = currentIndex < totalSlides - 1;
+  const canGoPrev = activeSlide > 0;
+  const canGoNext = activeSlide < totalSlides - 1;
 
   return (
     <div>
@@ -25,41 +38,32 @@ export function SliderUI() {
         slidesPerView={1}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
-          setCurrentIndex(swiper.activeIndex); // инициализация индекса
+          setActiveSlide(swiper.activeIndex); // инициализация индекса
         }}
         onSlideChange={(swiper) => {
-          setCurrentIndex(swiper.activeIndex); // обновляем индекс при смене слайда
+          setActiveSlide(swiper.activeIndex); // обновляем индекс при смене слайда
         }}
       >
-        <SwiperSlide>
-          <div className={styles.slide}>
-            <YearUI year={2021} animateTrigger={currentIndex} />
-            <YearUI year={2022} animateTrigger={currentIndex} />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.slide}>
-            <YearUI year={2000} animateTrigger={currentIndex} />
-            <YearUI year={2004} animateTrigger={currentIndex} />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.slide}>
-            <YearUI year={2010} animateTrigger={currentIndex} />
-            <YearUI year={1999} animateTrigger={currentIndex} />
-          </div>
-        </SwiperSlide>
+        {years.map((year, index) => (
+          <SwiperSlide key={index}>
+            <div className={styles.slide}>
+              <YearUI year={year[0]} isRose animateTrigger={activeSlide} />
+              <YearUI year={year[1]} animateTrigger={activeSlide} />
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
 
       <div className={styles.navigation}>
         <p className={styles.navigation__counter}>
-          {currentIndex + 1} / {totalSlides}
+          {activeSlide + 1} / {totalSlides}
         </p>
         <div className={styles.navigation__buttons}>
           <SliderButton canMove={canGoPrev} isNext={false} swiperRef={swiperRef} />
           <SliderButton canMove={canGoNext} isNext={true} swiperRef={swiperRef} />
         </div>
       </div>
+      <CircleSlider />
       <div className={styles.info}>
 
         <InfoUI year={'2000'}
