@@ -1,0 +1,1 @@
+export { InfoSlider } from './ui/info-slider';

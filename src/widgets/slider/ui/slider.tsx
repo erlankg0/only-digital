@@ -10,6 +10,7 @@ import { InfoUI } from '@/shared/components/info';
 import styles from './slider.module.scss';
 import { CircleSlider } from '@/widgets/circle-slider';
 import { useSlider } from '@/features/slider';
+import { InfoSlider } from '@/widgets/info-slider';
 
 
 const years = [
@@ -64,18 +65,9 @@ export function SliderUI() {
         </div>
       </div>
       <CircleSlider />
+      <InfoSlider />
       <div className={styles.info}>
 
-        <InfoUI year={'2000'}
-                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
-        <InfoUI year={'2000'}
-                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
-
-        <InfoUI year={'2000'}
-                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
-
-        <InfoUI year={'2000'}
-                text={'Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11'} />
 
       </div>
 
