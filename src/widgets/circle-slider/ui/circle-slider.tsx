@@ -1,10 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import gsap from 'gsap';
-import { CircleDot } from './circle-dot';
-import styles from './circle-slider.module.scss';
 import { useSlider } from '@/features/slider';
+import { CircleDot } from './circle-dot';
+
+import gsap from 'gsap';
+
+import styles from './circle-slider.module.scss';
 
 const circleInfo = [
   {

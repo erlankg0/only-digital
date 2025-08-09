@@ -1,0 +1,35 @@
+.button {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: $root-bg;
+  border: 1px solid $line-color;
+  border-radius: 50%;
+  transition: background-color 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: lighten($root-bg, 5%);
+    transform: scale(1.05);
+  }
+
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  &__hidden {
+    background-color: transparent;
+    color: transparent;
+    border-color: transparent;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+
+}

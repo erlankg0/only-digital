@@ -1,16 +1,14 @@
 'use client';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import { YearUI } from '@/shared/components/year';
 import { useRef } from 'react';
 import { Swiper as SwiperType } from 'swiper';
-import { SliderButton } from '@/widgets/slider/ui/slider.button';
-import { InfoUI } from '@/shared/components/info';
 import styles from './slider.module.scss';
+import { SliderButton } from '@/widgets/slider/ui/slider.button';
 import { CircleSlider } from '@/widgets/circle-slider';
-import { useSlider } from '@/features/slider';
 import { InfoSlider } from '@/widgets/info-slider';
+import { useSlider } from '@/features/slider';
 
 
 const years = [
@@ -67,7 +65,6 @@ export function SliderUI() {
       <CircleSlider />
       <InfoSlider />
       <div className={styles.info}>
-
 
       </div>
 

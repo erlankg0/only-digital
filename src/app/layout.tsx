@@ -1,8 +1,14 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { PT_Sans } from 'next/font/google';
+import { ContainerWrapper } from '@/shared/components/container';
+
 import './globals.scss';
-import ContainerWrapper from '../shared/components/container/ui/container-ui';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 
 const ptSans = PT_Sans({
   subsets: ['latin'],

@@ -1,7 +1,7 @@
 'use client';
 
 import { Swiper as SwiperType } from 'swiper';
-import { RefObject } from 'react';
+import { RefObject, useCallback } from 'react';
 import styles from './slider-button.module.scss';
 
 interface SliderButtonProps {
@@ -11,7 +11,7 @@ interface SliderButtonProps {
 }
 
 export function SliderButton({ isNext, swiperRef, canMove }: SliderButtonProps) {
-  const handleOnClick = () => {
+  const handleOnClick = useCallback(() => {
     if (!swiperRef.current) return;
 
     if (isNext) {
@@ -19,7 +19,7 @@ export function SliderButton({ isNext, swiperRef, canMove }: SliderButtonProps) 
     } else {
       swiperRef.current.slidePrev();
     }
-  };
+  }, [isNext, swiperRef]);
 
   return <button className={`${styles.button} ${canMove ? (styles.active) : (styles.disabled)}`}
                  onClick={handleOnClick}>{isNext ? '>' : '<'}</button>;

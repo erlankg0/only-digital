@@ -1,0 +1,11 @@
+.info {
+  display: grid;
+  grid-template-columns: auto 1fr auto; // кнопка - слайдер - кнопка
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+
+  .sliderWrapper {
+    overflow: hidden;
+  }
+}
