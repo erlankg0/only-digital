@@ -30,7 +30,7 @@ export function InfoSliderButtonUI({
     <button className={`${styles.button} ${hidden && (styles.button__hidden)}`}
             onClick={handleOnClick}>
       {!hidden && (
-        <ChevronUI direction={direction == 'left' ? 'right' : 'left'} isActive={!hidden} />
+        <ChevronUI direction={direction == 'left' ? 'right' : 'left'} isActive={!hidden} color={"#3877EE"} />
       )}
     </button>
   );

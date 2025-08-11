@@ -9,4 +9,10 @@
   &__purple {
     color: $purple-color;
   }
+
+  @media (max-width: 768px) {
+    font-size: $data-size-middle; // нужно определить эту переменную или заменить на нужный размер, например 14px
+  }
+
 }
+
