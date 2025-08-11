@@ -8,10 +8,11 @@ import gsap from 'gsap';
 
 import styles from './circle-slider.module.scss';
 
-
 export function CircleSlider() {
   const circleRef = useRef<HTMLDivElement>(null);
   const { activeSlide, setActiveSlide } = useSlider();
+  const [positions, setPositions] = useState<{ x: number; y: number }[]>([]);
+  const radius = 265;
 
   const [rotation, setRotation] = useState(0);
   const anglePerItem = 360 / circleInfo.length;
@@ -41,33 +42,38 @@ export function CircleSlider() {
     rotateTo(activeSlide);
   }, [activeSlide]);
 
+  useEffect(() => {
+    const round = (n: number) => Math.round(n * 1000) / 1000;
+    const newPositions = circleInfo.map((_, i) => {
+      const angle = anglePerItem * i;
+      const x = round(radius * Math.cos((angle * Math.PI) / 180));
+      const y = round(radius * Math.sin((angle * Math.PI) / 180));
+      return { x, y };
+    });
+    setPositions(newPositions);
+  }, []);
+
+  if (positions.length === 0) return null; // Пока координаты не готовы, ничего не рендерим
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.circle} ref={circleRef}>
-        {circleInfo.map((info, i) => {
-          const angle = anglePerItem * i;
-          const radius = 265;
-
-          const x = radius * Math.cos((angle * Math.PI) / 180);
-          const y = radius * Math.sin((angle * Math.PI) / 180);
-
-          return (
-            <div
-              key={i}
-              className={`${styles.item} ${i === activeSlide ? styles.active : ''}`}
-              style={{
-                left: '50%',
-                top: '50%',
-                transform: `translate(${x}px, ${y}px) translate(-50%, -50%)`,
-              }}
-              onClick={() => setActiveSlide(i)}
-            >
-              <div style={{ transform: `rotate(${-rotation}deg)` }}>
-                <CircleDot sliderIndex={i + 1} title={info.text} isActive={activeSlide === i} />
-              </div>
+        {circleInfo.map((info, i) => (
+          <div
+            key={i}
+            className={`${styles.item} ${i === activeSlide ? styles.active : ''}`}
+            style={{
+              left: '50%',
+              top: '50%',
+              transform: `translate(${positions[i].x}px, ${positions[i].y}px) translate(-50%, -50%)`,
+            }}
+            onClick={() => setActiveSlide(i)}
+          >
+            <div style={{ transform: `rotate(${-rotation}deg)` }}>
+              <CircleDot sliderIndex={i + 1} title={info.text} isActive={activeSlide === i} />
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
     </div>
   );

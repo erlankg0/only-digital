@@ -13,18 +13,14 @@ interface SliderButtonProps {
 
 export function SliderButton({ isNext, swiperRef, canMove }: SliderButtonProps) {
   const handleOnClick = useCallback(() => {
-    if (!swiperRef) {
-      return;
-    } else {
-      if (!swiperRef.current) return;
+    if (!canMove || !swiperRef?.current) return;
 
-      if (isNext) {
-        swiperRef.current.slideNext();
-      } else {
-        swiperRef.current.slidePrev();
-      }
+    if (isNext) {
+      swiperRef.current.slideNext();
+    } else {
+      swiperRef.current.slidePrev();
     }
-  }, [isNext, swiperRef]);
+  }, [canMove, isNext, swiperRef]);
 
   return <button className={`${styles.button} ${canMove ? (styles.active) : (styles.disabled)}`}
                  onClick={handleOnClick}>{isNext ? (<ChevronUI isActive={canMove} direction={'left'} />) : (

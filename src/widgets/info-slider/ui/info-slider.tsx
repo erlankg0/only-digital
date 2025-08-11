@@ -16,11 +16,15 @@ import styles from './info.module.scss';
 
 export function InfoSlider({ slot }: { slot?: ReactNode }) {
   const swiperRef = useRef<SwiperType | null>(null);
-  const [navState, setNavState] = useState({ isBeginning: true, isEnd: false });
   const { activeSlide } = useSlider();
+
+  const [navState, setNavState] = useState({ isBeginning: true, isEnd: false });
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const { info } = circleInfo[activeSlide];
+
+  const currentSlide = circleInfo[activeSlide];
+  const info = currentSlide?.info ?? null;
+
   const handleSlideChange = (swiper: SwiperType) => {
     setNavState({
       isBeginning: swiper.isBeginning,
@@ -57,7 +61,8 @@ export function InfoSlider({ slot }: { slot?: ReactNode }) {
             },
           }}
         >
-          {info.map((info, i) => (
+
+          {info && info.map((info, i) => (
             <SwiperSlide key={i}>
               <InfoUI
                 year={info.year}
@@ -76,7 +81,7 @@ export function InfoSlider({ slot }: { slot?: ReactNode }) {
 
       <div className={styles.navigation}>
         {slot}
-        <InfoPagination swiperType={swiperRef} activeIndex={activeIndex} totalSlides={info.length} />
+        {info && (<InfoPagination swiperType={swiperRef} activeIndex={activeIndex} totalSlides={info.length} />)}
       </div>
     </div>
   );
