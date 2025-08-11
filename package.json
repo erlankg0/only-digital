@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint:eslint": "next lint",
+    "lint:stylelint": "stylelint 'src/**/*.{css,scss}'",
+    "lint": "npm run lint:eslint && npm run lint:stylelint"
   },
   "dependencies": {
     "gsap": "^3.13.0",

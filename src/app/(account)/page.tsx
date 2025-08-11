@@ -2,11 +2,11 @@ import { Banner } from '@/widgets/banner';
 import { CircleSlider } from '@/widgets/circle-slider';
 import { InfoSlider } from '@/widgets/info-slider';
 import { SliderNavigation, SliderUI } from '@/widgets/slider';
+import { LineInfo } from '@/widgets/line-info';
 
 import { TitleUI } from '@/shared/components/title';
 
 import styles from './page.module.scss';
-import { LineInfo } from '@/widgets/line-info';
 
 
 export default function Page() {
