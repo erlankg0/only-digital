@@ -11,8 +11,11 @@
   }
 
   @media (max-width: 768px) {
-    font-size: $data-size-middle; // нужно определить эту переменную или заменить на нужный размер, например 14px
+    font-size: $data-size-middle;
   }
 
+  @media (max-width: 425px) {
+    font-size: $data-size-mobile;
+  }
 }
 

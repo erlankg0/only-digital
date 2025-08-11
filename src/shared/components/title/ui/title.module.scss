@@ -16,4 +16,17 @@
     height: 100%;
     background: $gradient-line-vertical;
   }
+
+  @media (max-width: 425px) {
+    &::before {
+      display: none;
+    }
+    & {
+      font-size: $title-size-mobile;
+      font-weight: $font-bold;
+      max-width: 12rem;
+      width: 100%;
+      line-height: 1.2;
+    }
+  }
 }

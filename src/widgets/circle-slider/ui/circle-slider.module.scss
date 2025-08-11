@@ -8,6 +8,13 @@
   transform: translate(-50%, -50%);
   z-index: 10;
 
+  @media (max-width: 425px) {
+    display: block;
+    position: static;
+    margin: 1rem auto;
+  }
+
+
 }
 
 .circle {
@@ -25,6 +32,10 @@
 
   // Сглаживание анимации
   transform-style: preserve-3d;
+
+  @media (max-width: 425px) {
+    display: none;
+  }
 }
 
 .item {

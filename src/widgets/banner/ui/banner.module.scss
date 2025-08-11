@@ -3,33 +3,44 @@
   width: 100%;
   height: 100vh;
 
-
-  border-left: 1px  solid  $line-color;
-  border-right: 1px solid  $line-color;
+  border-left: 1px solid $line-color;
+  border-right: 1px solid $line-color;
 
   padding: 0 8rem;
-}
 
-/* Горизонтальная линия */
-.banner::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: $line-color;
-  transform: translateY(-50%);
-}
+  // линии на странице
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $line-color;
+    transform: translateY(-50%);
+  }
 
-/* Вертикальная линия */
-.banner::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 1px;
-  height: 100%;
-  background-color: $line-color;
-  transform: translateX(-50%);
+  &::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: $line-color;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 425px) {
+    padding: 3rem 0.2rem;
+
+    border-left: none;
+    border-right: none;
+
+    &::before,
+    &::after {
+      display: none;
+    }
+  }
+
 }

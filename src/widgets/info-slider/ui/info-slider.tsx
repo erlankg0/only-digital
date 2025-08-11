@@ -33,7 +33,18 @@ export function InfoSlider() {
           spaceBetween={50}
           slidesPerView={3}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
+          pagination={{ clickable: true }}
           onSlideChange={handleSlideChange}
+          breakpoints={{
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            425: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+          }}
         >
           {info.map((info, i)=> (
             <SwiperSlide key={i}>

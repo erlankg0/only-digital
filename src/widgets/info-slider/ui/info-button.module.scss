@@ -27,8 +27,13 @@
     border-color: transparent;
     cursor: default;
     box-shadow: none;
+
     &:hover {
       background-color: transparent;
     }
+  }
+
+  @media (max-width: 425px) {
+    display: none;
   }
 }
