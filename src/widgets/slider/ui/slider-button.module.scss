@@ -26,4 +26,10 @@
     border: 1px solid rgba($primary-color, .25);
     cursor: not-allowed;
   }
+
+
+  @media (max-width: 425px) {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 }

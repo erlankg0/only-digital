@@ -25,7 +25,7 @@ export default function Page() {
             <InfoSlider />
           </div>
           <div className={styles.footer__mobile}>
-            <InfoSlider />
+            <InfoSlider slot={<SliderNavigation />} />
           </div>
         </div>
       </Banner>

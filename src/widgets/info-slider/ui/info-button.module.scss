@@ -11,6 +11,8 @@
   transition: background-color 0.3s, transform 0.2s;
   box-shadow: 5px 5px 10px rgba(56, 119, 238, 0.3);
 
+  position: absolute;
+
   &:hover {
     background-color: transparent;
     transform: scale(1.05);

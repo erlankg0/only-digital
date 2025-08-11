@@ -7,12 +7,14 @@ type InfoSliderButtonUIProps = {
   direction: 'left' | 'right';
   swiperRef: RefObject<SwiperType | null>;
   hidden?: boolean;
+  className?: string;
 };
 
 export function InfoSliderButtonUI({
                                      direction,
                                      hidden = false,
                                      swiperRef,
+                                     className = '',
                                    }: InfoSliderButtonUIProps) {
 
 
@@ -27,10 +29,10 @@ export function InfoSliderButtonUI({
   }, [direction, swiperRef]);
 
   return (
-    <button className={`${styles.button} ${hidden && (styles.button__hidden)}`}
+    <button className={`${styles.button} ${hidden && (styles.button__hidden)} ${className}`}
             onClick={handleOnClick}>
       {!hidden && (
-        <ChevronUI direction={direction == 'left' ? 'right' : 'left'} isActive={!hidden} color={"#3877EE"} />
+        <ChevronUI direction={direction == 'left' ? 'right' : 'left'} isActive={!hidden} color={'#3877EE'} />
       )}
     </button>
   );

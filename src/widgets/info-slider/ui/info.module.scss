@@ -1,11 +1,36 @@
 .info {
-  display: grid;
-  grid-template-columns: auto 1fr auto; // кнопка - слайдер - кнопка
-  align-items: center;
-  gap: 2rem;
+  position: relative; // важный момент для absolute-позиционирования кнопок
   width: 100%;
 
   .sliderWrapper {
     overflow: hidden;
+  }
+
+  .sliderButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10; // чтобы кнопка была поверх слайдов
+
+    &--left {
+      left: -7rem; // вынос за пределы слайдера
+    }
+
+    &--right {
+      right: -7rem;
+    }
+  }
+}
+
+
+.navigation {
+  display: none;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+
+  @media (max-width: 425px) {
+    display: flex;
   }
 }
