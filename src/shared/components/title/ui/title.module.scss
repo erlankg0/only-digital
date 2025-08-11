@@ -4,14 +4,13 @@
   color: $primary-color;
   max-width: 35rem;
   position: relative;
-  padding-left: 3rem;
   line-height: 7rem;
   margin: 0;
 
   &::before {
     content: '';
     position: absolute;
-    left: 0;
+    left: -8rem;
     top: 0;
     width: 0.5rem;
     height: 100%;

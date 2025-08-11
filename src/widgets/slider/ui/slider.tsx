@@ -2,36 +2,23 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { YearUI } from '@/shared/components/year';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import styles from './slider.module.scss';
-import { SliderButton } from '@/widgets/slider/ui/slider.button';
-import { CircleSlider } from '@/widgets/circle-slider';
-import { InfoSlider } from '@/widgets/info-slider';
 import { useSlider } from '@/features/slider';
-
-
-const years = [
-  [1987, 1991],
-  [1992, 1996],
-  [1997, 2001],
-  [2002, 2006],
-  [2007, 2011],
-  [2012, 2016],
-];
+import { years } from '@/shared/const';
 
 
 export function SliderUI() {
   const swiperRef = useRef<SwiperType | null>(null);
-  const { activeSlide, setActiveSlide } = useSlider();
+  const { activeSlide, setActiveSlide, setSwiper } = useSlider();
 
-  const totalSlides = years.length; // общее количество слайдов
-
-  const canGoPrev = activeSlide > 0;
-  const canGoNext = activeSlide < totalSlides - 1;
+  useEffect(() => {
+    setSwiper(swiperRef);
+  }, [setSwiper]);
 
   return (
-    <div>
+    <div className={styles.content}>
       <Swiper
         className={styles.slider}
         slidesPerView={1}
@@ -52,22 +39,6 @@ export function SliderUI() {
           </SwiperSlide>
         ))}
       </Swiper>
-
-      <div className={styles.navigation}>
-        <p className={styles.navigation__counter}>
-          {activeSlide + 1} / {totalSlides}
-        </p>
-        <div className={styles.navigation__buttons}>
-          <SliderButton canMove={canGoPrev} isNext={false} swiperRef={swiperRef} />
-          <SliderButton canMove={canGoNext} isNext={true} swiperRef={swiperRef} />
-        </div>
-      </div>
-      <CircleSlider />
-      <InfoSlider />
-      <div className={styles.info}>
-
-      </div>
-
     </div>
   );
 }

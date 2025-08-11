@@ -1,9 +1,10 @@
 import { RefObject, useCallback } from 'react';
 import { Swiper as SwiperType } from 'swiper';
 import styles from './info-button.module.scss';
+import { ChevronUI } from '@/shared/components/chevron';
 
 type InfoSliderButtonUIProps = {
-  direction: 'prev' | 'next';
+  direction: 'left' | 'right';
   swiperRef: RefObject<SwiperType | null>;
   hidden?: boolean;
 };
@@ -18,7 +19,7 @@ export function InfoSliderButtonUI({
   const handleOnClick = useCallback(() => {
     if (!swiperRef.current) return;
 
-    if (direction === 'next') {
+    if (direction === 'right') {
       swiperRef.current.slideNext();
     } else {
       swiperRef.current.slidePrev();
@@ -27,7 +28,11 @@ export function InfoSliderButtonUI({
 
   return (
     <button className={`${styles.button} ${hidden && (styles.button__hidden)}`}
-            onClick={handleOnClick}>{direction}</button>
+            onClick={handleOnClick}>
+      {!hidden && (
+        <ChevronUI direction={direction == 'left' ? 'right' : 'left'} isActive={!hidden} />
+      )}
+    </button>
   );
 
 }

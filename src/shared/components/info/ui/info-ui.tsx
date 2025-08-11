@@ -1,7 +1,7 @@
 import styles from './info.module.scss';
 
 type InfoUIProps = {
-  year: string;
+  year: number;
   text: string;
 }
 

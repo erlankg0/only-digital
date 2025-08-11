@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
@@ -5,11 +7,15 @@ import { Swiper as SwiperType } from 'swiper';
 import { InfoUI } from '@/shared/components/info';
 import { InfoSliderButtonUI } from '@/widgets/info-slider/ui/info-slider-button-ui';
 import styles from './info.module.scss';
+import { circleInfo } from '@/shared/const';
+import { useSlider } from '@/features/slider';
 
 export function InfoSlider() {
   const swiperRef = useRef<SwiperType | null>(null);
   const [navState, setNavState] = useState({ isBeginning: true, isEnd: false });
+  const { activeSlide } = useSlider();
 
+  const { info } = circleInfo[activeSlide];
   const handleSlideChange = (swiper: SwiperType) => {
     setNavState({
       isBeginning: swiper.isBeginning,
@@ -19,7 +25,7 @@ export function InfoSlider() {
 
   return (
     <div className={styles.info}>
-      <InfoSliderButtonUI hidden={navState.isBeginning} direction="prev" swiperRef={swiperRef} />
+      <InfoSliderButtonUI hidden={navState.isBeginning} direction="left" swiperRef={swiperRef} />
       {/* Сам слайдер */}
       <div className={styles.sliderWrapper}>
         <Swiper
@@ -29,18 +35,19 @@ export function InfoSlider() {
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={handleSlideChange}
         >
-          {Array.from({ length: 10 }).map((_, i) => (
+          {info.map((info, i)=> (
             <SwiperSlide key={i}>
               <InfoUI
-                year="2000"
-                text="Телескоп «Хаббл» обнаружил самую удалённую из всех обнаруженных галактик, получившую обозначение GN-z11"
+                year={info.year}
+                text={info.text}
               />
             </SwiperSlide>
           ))}
+
         </Swiper>
       </div>
 
-      <InfoSliderButtonUI hidden={navState.isEnd} direction="next" swiperRef={swiperRef} />
+      <InfoSliderButtonUI hidden={navState.isEnd} direction="right" swiperRef={swiperRef} />
     </div>
   );
 }

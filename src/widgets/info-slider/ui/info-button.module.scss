@@ -11,7 +11,7 @@
   transition: background-color 0.3s, transform 0.2s;
 
   &:hover {
-    background-color: lighten($root-bg, 5%);
+    background-color: transparent;
     transform: scale(1.05);
   }
 
@@ -30,6 +30,4 @@
       background-color: transparent;
     }
   }
-
-
 }

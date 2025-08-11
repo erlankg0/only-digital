@@ -3,61 +3,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSlider } from '@/features/slider';
 import { CircleDot } from './circle-dot';
-
+import { circleInfo } from '@/shared/const';
 import gsap from 'gsap';
 
 import styles from './circle-slider.module.scss';
 
-const circleInfo = [
-  {
-    index: 0,
-    text: 'Кино',
-    info: Array.from({ length: 12 }, (_, i) => ({
-      year: 1987 + i,
-      text: `Фильм ${i + 1}`,
-    })),
-  },
-  {
-    index: 1,
-    text: 'Музыка',
-    info: Array.from({ length: 12 }, (_, i) => ({
-      year: 1992 + i,
-      text: `Альбом ${i + 1}`,
-    })),
-  },
-  {
-    index: 2,
-    text: 'Игры',
-    info: Array.from({ length: 12 }, (_, i) => ({
-      year: 1997 + i,
-      text: `Игра ${i + 1}`,
-    })),
-  },
-  {
-    index: 3,
-    text: 'Технологии',
-    info: Array.from({ length: 12 }, (_, i) => ({
-      year: 2002 + i,
-      text: `Технология ${i + 1}`,
-    })),
-  },
-  {
-    index: 4,
-    text: 'Мода',
-    info: Array.from({ length: 12 }, (_, i) => ({
-      year: 2007 + i,
-      text: `Тренд ${i + 1}`,
-    })),
-  },
-  {
-    index: 5,
-    text: 'Спорт',
-    info: Array.from({ length: 12 }, (_, i) => ({
-      year: 2012 + i,
-      text: `Событие ${i + 1}`,
-    })),
-  },
-];
 
 export function CircleSlider() {
   const circleRef = useRef<HTMLDivElement>(null);
