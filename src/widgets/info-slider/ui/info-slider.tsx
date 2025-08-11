@@ -1,15 +1,18 @@
 'use client';
 
-import { useRef, useState, ReactNode } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import { Swiper as SwiperType } from 'swiper';
-import { InfoUI } from '@/shared/components/info';
-import { InfoSliderButtonUI } from '@/widgets/info-slider/ui/info-slider-button-ui';
-import styles from './info.module.scss';
+
 import { circleInfo } from '@/shared/const';
+import { InfoUI } from '@/shared/components/info';
 import { useSlider } from '@/features/slider';
-import { InfoPagination } from '@/widgets/info-slider/ui/info-pagination';
+
+import { InfoSliderButtonUI } from './info-slider-button-ui';
+import { InfoPagination } from './info-pagination';
+import styles from './info.module.scss';
+
 
 export function InfoSlider({ slot }: { slot?: ReactNode }) {
   const swiperRef = useRef<SwiperType | null>(null);

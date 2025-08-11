@@ -1,13 +1,14 @@
 'use client';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { YearUI } from '@/shared/components/year';
 import { useEffect, useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper';
-import styles from './slider.module.scss';
-import { useSlider } from '@/features/slider';
-import { years } from '@/shared/const';
 
+import { years } from '@/shared/const';
+import { YearUI } from '@/shared/components/year';
+import { useSlider } from '@/features/slider';
+
+import styles from './slider.module.scss';
 
 export function SliderUI() {
   const swiperRef = useRef<SwiperType | null>(null);

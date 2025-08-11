@@ -2,8 +2,8 @@
 
 import { Swiper as SwiperType } from 'swiper';
 import { RefObject, useCallback } from 'react';
-import styles from './slider-button.module.scss';
 import { ChevronUI } from '@/shared/components/chevron';
+import styles from './slider-button.module.scss';
 
 interface SliderButtonProps {
   isNext: boolean;

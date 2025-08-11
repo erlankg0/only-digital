@@ -1,9 +1,13 @@
 import { Banner } from '@/widgets/banner';
-import styles from './page.module.scss';
-import { TitleUI } from '@/shared/components/title';
-import { SliderUI, SliderNavigation } from '@/widgets/slider';
 import { CircleSlider } from '@/widgets/circle-slider';
 import { InfoSlider } from '@/widgets/info-slider';
+import { SliderNavigation, SliderUI } from '@/widgets/slider';
+
+import { TitleUI } from '@/shared/components/title';
+
+import styles from './page.module.scss';
+import { LineInfo } from '@/widgets/line-info';
+
 
 export default function Page() {
   return (
@@ -20,6 +24,11 @@ export default function Page() {
             <SliderUI />
             <CircleSlider />
           </div>
+          <div className={styles.main_mobile}>
+            <SliderUI />
+            <LineInfo />
+          </div>
+
           <div className={styles.footer}>
             <SliderNavigation />
             <InfoSlider />

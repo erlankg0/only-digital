@@ -1,7 +1,7 @@
 import { RefObject, useCallback } from 'react';
 import { Swiper as SwiperType } from 'swiper';
-import styles from './info-button.module.scss';
 import { ChevronUI } from '@/shared/components/chevron';
+import styles from './info-button.module.scss';
 
 type InfoSliderButtonUIProps = {
   direction: 'left' | 'right';
